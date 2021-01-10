@@ -145,9 +145,9 @@ function init(){
             generateIntern();
         }
         else {
-            console.log(team);
+            
             const template = render(team);
-            console.log(template);
+         
             return fs.writeFileSync(outputPath, template)
         }
     });
