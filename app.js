@@ -132,21 +132,25 @@ function generateIntern() {
 
 function init(){
     inquirer.prompt(roleQuestion)
-    then((answer) => {
-        if(answer === "Manager"){
+    .then((answer) => {
+        console.log(answer.role);
+
+        if(answer.role === "Manager"){
             generateManager();
         } 
-        else if(answer === "Engineer"){
+        else if(answer.role === "Engineer"){
             generateEngineer();
         }
-        else if(answer === "Intern" ){
+        else if(answer.role === "Intern" ){
             generateIntern();
         }
         else {
             console.log(team);
-            return;
+            const template = render(team);
+            console.log(template);
+            return fs.writeFileSync(outputPath, template)
         }
-    })
+    });
 }
 
     
